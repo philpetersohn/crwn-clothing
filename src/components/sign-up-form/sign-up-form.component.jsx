@@ -56,7 +56,6 @@ const SignUpForm = () => {
       <h2> Don't have an account</h2>
       <span>Sign with your email and password</span>
       <form onSubmit={handleSubmit}>
-        <label>Display Name</label>
         <FormInput
           label="Display Name"
           type="input"
@@ -65,7 +64,6 @@ const SignUpForm = () => {
           name="displayName"
           value={displayName}
         />
-        <label></label>Email
         <FormInput
           label="Email"
           type="email"
@@ -74,7 +72,6 @@ const SignUpForm = () => {
           name="email"
           value={email}
         />
-        <label>Password</label>
         <FormInput
           label="Password"
           type="password"
@@ -83,7 +80,6 @@ const SignUpForm = () => {
           name="password"
           value={password}
         />
-        <label>Confirm Password</label>
         <FormInput
           label="Confirm Password"
           type="password"
