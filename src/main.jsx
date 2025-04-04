@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 
 import App from './App.jsx'
-import { UserProvider } from './context/user.context.jsx'
-import { CategoriesProvider } from './context/categories.context.jsx'
-import { CartProvider } from './context/cart.context.jsx'
+import { UserProvider } from './contexts/user.context'
+import { CategoriesProvider } from './contexts/categories.context'
+import { CartProvider } from './contexts/cart.context'
 
 import '../index.scss'
 
