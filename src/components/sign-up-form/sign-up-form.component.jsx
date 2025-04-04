@@ -1,14 +1,14 @@
 import { useState } from 'react'
 
+import FormInput from '../form-input/form-input.component'
+import Button from '../button/button.component'
+
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from '../../utils/firebase/firebase.utils'
 
-import FormInput from '../form-input/form-input.component'
-import Button from '../button/button.component'
-
-import './sign-up-form.styles.scss'
+import { SignUpContainer } from './sign-up-form.styles'
 
 const defaultFormFields = {
   displayName: '',
@@ -29,7 +29,7 @@ const SignUpForm = () => {
     event.preventDefault()
 
     if (password !== confirmPassword) {
-      alert('Your passwords do not match')
+      alert('passwords do not match')
       return
     }
 
@@ -40,31 +40,33 @@ const SignUpForm = () => {
       resetFormFields()
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {
-        alert('Con not create a new user, email already in use')
+        alert('Cannot create user, email already in use')
       } else {
-        console.log('An error encounted', error)
+        console.log('user creation encountered an error', error)
       }
     }
   }
 
   const handleChange = (event) => {
     const { name, value } = event.target
+
     setFormFields({ ...formFields, [name]: value })
   }
 
   return (
-    <div className="sign-up-container">
-      <h2> Don't have an account</h2>
-      <span>Sign with your email and password</span>
+    <SignUpContainer>
+      <h2>Don't have an account?</h2>
+      <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label="Display Name"
-          type="input"
+          type="text"
           required
           onChange={handleChange}
           name="displayName"
           value={displayName}
         />
+
         <FormInput
           label="Email"
           type="email"
@@ -73,6 +75,7 @@ const SignUpForm = () => {
           name="email"
           value={email}
         />
+
         <FormInput
           label="Password"
           type="password"
@@ -81,6 +84,7 @@ const SignUpForm = () => {
           name="password"
           value={password}
         />
+
         <FormInput
           label="Confirm Password"
           type="password"
@@ -89,11 +93,9 @@ const SignUpForm = () => {
           name="confirmPassword"
           value={confirmPassword}
         />
-        <Button buttonType="inverted" type="submit">
-          Sign Up
-        </Button>
+        <Button type="submit">Sign Up</Button>
       </form>
-    </div>
+    </SignUpContainer>
   )
 }
 
